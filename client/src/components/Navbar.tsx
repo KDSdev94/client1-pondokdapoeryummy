@@ -40,7 +40,7 @@ export function Navbar() {
             <div className="bg-primary/10 p-2 rounded-full group-hover:bg-primary/20 transition-colors">
               <Egg className="w-6 h-6 text-primary" />
             </div>
-            <span className="font-display text-xl sm:text-2xl font-bold text-secondary">
+            <span className="font-display text-xl sm:text-2xl font-bold text-primary">
               Pondok Dapoer Yummy
             </span>
           </Link>
@@ -53,9 +53,7 @@ export function Navbar() {
                 href={link.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-primary relative py-1",
-                  location === link.href
-                    ? "text-primary"
-                    : "text-muted-foreground"
+                  location === link.href ? "text-primary" : "text-gray-900"
                 )}
               >
                 {link.label}

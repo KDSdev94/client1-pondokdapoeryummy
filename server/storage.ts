@@ -14,14 +14,47 @@ export class DatabaseStorage implements IStorage {
   }
 
   async getProduct(id: number): Promise<Product | undefined> {
-    const [product] = await db.select().from(products).where(eq(products.id, id));
+    const [product] = await db
+      .select()
+      .from(products)
+      .where(eq(products.id, id));
     return product;
   }
 
   async createProduct(insertProduct: InsertProduct): Promise<Product> {
-    const [product] = await db.insert(products).values(insertProduct).returning();
+    const [product] = await db
+      .insert(products)
+      .values(insertProduct)
+      .returning();
     return product;
   }
 }
 
-export const storage = new DatabaseStorage();
+export class MemStorage implements IStorage {
+  private products: Map<number, Product>;
+  private currentId: number;
+
+  constructor() {
+    this.products = new Map();
+    this.currentId = 1;
+  }
+
+  async getProducts(): Promise<Product[]> {
+    return Array.from(this.products.values());
+  }
+
+  async getProduct(id: number): Promise<Product | undefined> {
+    return this.products.get(id);
+  }
+
+  async createProduct(insertProduct: InsertProduct): Promise<Product> {
+    const id = this.currentId++;
+    const product: Product = { ...insertProduct, id };
+    this.products.set(id, product);
+    return product;
+  }
+}
+
+export const storage = process.env.DATABASE_URL
+  ? new DatabaseStorage()
+  : new MemStorage();
