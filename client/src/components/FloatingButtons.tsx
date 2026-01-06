@@ -26,7 +26,7 @@ export function FloatingButtons() {
       {/* WhatsApp Button (Bottom Right) */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-end">
         <a
-          href="https://wa.me/6282327361091"
+          href="https://wa.me/+6281234567890"
           target="_blank"
           rel="noopener noreferrer"
           className="group flex items-center gap-2 bg-[#25D366] hover:bg-[#20bd5a] text-white px-4 py-3 rounded-full shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl"

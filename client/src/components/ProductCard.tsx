@@ -67,7 +67,7 @@ export function ProductCard({ product, index }: ProductCardProps) {
             aria-label={`Order ${product.name}`}
             onClick={() =>
               window.open(
-                `https://wa.me/6282327361091?text=Halo, saya ingin pesan ${product.name}`,
+                `https://wa.me/6281234567890?text=Halo, saya ingin pesan ${product.name}`,
                 "_blank"
               )
             }
