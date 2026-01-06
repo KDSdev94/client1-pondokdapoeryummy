@@ -42,6 +42,37 @@
     @apply bg-background text-foreground;
     font-family: var(--font-body);
   }
+
+  ::selection {
+    background-color: hsl(var(--primary) / 0.3);
+    color: inherit;
+  }
+
+  ::-moz-selection {
+    background-color: hsl(var(--primary) / 0.3);
+    color: inherit;
+  }
+
+  /* High contrast selection for vibrant/dark backgrounds */
+  .bg-primary ::selection {
+    background-color: #ffffff !important;
+    color: hsl(var(--primary)) !important;
+  }
+
+  .bg-primary ::-moz-selection {
+    background-color: #ffffff !important;
+    color: hsl(var(--primary)) !important;
+  }
+
+  .bg-secondary ::selection {
+    background-color: #ffffff !important;
+    color: hsl(var(--secondary)) !important;
+  }
+
+  .bg-secondary ::-moz-selection {
+    background-color: #ffffff !important;
+    color: hsl(var(--secondary)) !important;
+  }
   h1,
   h2,
   h3,
